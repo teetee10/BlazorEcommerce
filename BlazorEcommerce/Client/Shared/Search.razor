@@ -1,5 +1,4 @@
-﻿@*@using Microsoft.AspNetCore.Components.Web*@
-@inject NavigationManager NavigationManager
+﻿@inject NavigationManager NavigationManager
 @inject IProductService ProductService
 
 <div class="input-group">
@@ -24,6 +23,7 @@
     </div>
 </div>
 
+
 @code {
     private string searchText = string.Empty; 
     private List<string> suggestions = new List<string>();
@@ -35,11 +35,13 @@
         {
             await searchInput.FocusAsync();
         }
+
     }
 
     public void SearchProducts()
     {
-        NavigationManager.NavigateTo($"search/{searchText}/1");
+        NavigationManager.NavigateTo($"search/{searchText}");
+
     }
 
     public async Task HandleSearch(KeyboardEventArgs args)
@@ -54,4 +56,3 @@
         }
     }
 }
-

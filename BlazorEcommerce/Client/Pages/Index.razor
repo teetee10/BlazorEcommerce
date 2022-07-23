@@ -15,14 +15,14 @@ else
     <ProductList />
 }*@
 
-@if ( CategoryUrl == null)
+@*@if ( CategoryUrl == null)
 {
     <FeaturedProducts />
 }
 else
 {
     <ProductList />
-}
+}*@
 
 @code {
     [Parameter]
@@ -39,7 +39,9 @@ else
             await ProductService.SearchProducts(SearchText);
         }
         else
+        {
             await ProductService.GetProducts(CategoryUrl);
+        }
 
     }
 
