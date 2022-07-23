@@ -2,27 +2,17 @@
 @page "/search/{searchText}"
 @page "/{categoryUrl}"
 @inject IProductService ProductService
+
 <PageTitle>My Solar Shop</PageTitle>
 
-<ProductList />
-
-@*@if (SearchText == null && CategoryUrl == null)
+@if (SearchText == null && CategoryUrl == null)
 {
     <FeaturedProducts />
 }
 else
 {
     <ProductList />
-}*@
-
-@*@if ( CategoryUrl == null)
-{
-    <FeaturedProducts />
-}
-else
-{
-    <ProductList />
-}*@
+} 
 
 @code {
     [Parameter]
