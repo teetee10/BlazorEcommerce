@@ -12,6 +12,22 @@ namespace BlazorEcommerce.Server.Data
         //Seeds Data to Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ProductVariant>()
+                .HasKey(p => new { p.ProductId, p.ProductTypeId });
+
+            modelBuilder.Entity<ProductType>().HasData(
+                    new ProductType { Id = 1, Name = "Default" },
+                    new ProductType { Id = 2, Name = "Paperback" },
+                    new ProductType { Id = 3, Name = "E-Book" },
+                    new ProductType { Id = 4, Name = "Audiobook" },
+                    new ProductType { Id = 5, Name = "Stream" },
+                    new ProductType { Id = 6, Name = "Blu-ray" },
+                    new ProductType { Id = 7, Name = "VHS" },
+                    new ProductType { Id = 8, Name = "PC" },
+                    new ProductType { Id = 9, Name = "PlayStation" },
+                    new ProductType { Id = 10, Name = "Xbox" }
+            );
+
             modelBuilder.Entity<Category>().HasData(
                     new Category
                     {
@@ -40,7 +56,7 @@ namespace BlazorEcommerce.Server.Data
                     Description = "The Hitchhiker's Guide to the Galaxy[note 1] (sometimes referred to as HG2G,[1] HHGTTG,[2] H2G2,[3] or tHGttG) is a comedy science fiction franchise created by Douglas Adams. Originally a 1978 radio comedy broadcast on BBC Radio 4, it was later adapted to other formats, including stage shows, novels, comic books, a 1981 TV series, a 1984 video game, and 2005 feature film.",
                     ImageUrl = "https://upload.wikimedia.org/wikipedia/en/b/bd/H2G2_UK_front_cover.jpg",
                     CategoryId = 1,
-                    //Featured = true
+                    Featured = true
                    },
                 new Product
                 {
@@ -72,8 +88,8 @@ namespace BlazorEcommerce.Server.Data
                     CategoryId = 2,
                     Title = "Back to the Future",
                     Description = "Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis. Written by Zemeckis and Bob Gale, it stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Doctor Emmett \"Doc\" Brown (Lloyd). Trapped in the past, Marty inadvertently prevents his future parents' meeting—threatening his very existence—and is forced to reconcile the pair and somehow get back to the future.",
-                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg"
-                    //Featured = true
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg",
+                    Featured = true
                 },
                 new Product
                 {
@@ -105,8 +121,8 @@ namespace BlazorEcommerce.Server.Data
                     CategoryId = 3,
                     Title = "Day of the Tentacle",
                     Description = "Day of the Tentacle, also known as Maniac Mansion II: Day of the Tentacle, is a 1993 graphic adventure game developed and published by LucasArts. It is the sequel to the 1987 game Maniac Mansion.",
-                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/7/79/Day_of_the_Tentacle_artwork.jpg"
-                //Featured = true
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/7/79/Day_of_the_Tentacle_artwork.jpg",
+                    Featured = true
                 },
                 new Product
                 {
@@ -125,10 +141,123 @@ namespace BlazorEcommerce.Server.Data
                     ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/e/ee/Nintendo-Super-Famicom-Set-FL.jpg"
                 }
             );
+            modelBuilder.Entity<ProductVariant>().HasData(
+               new ProductVariant
+               {
+                   ProductId = 1,
+                   ProductTypeId = 2,
+                   Price = 9.99m,
+                   OriginalPrice = 19.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 1,
+                   ProductTypeId = 3,
+                   Price = 7.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 1,
+                   ProductTypeId = 4,
+                   Price = 19.99m,
+                   OriginalPrice = 29.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 2,
+                   ProductTypeId = 2,
+                   Price = 7.99m,
+                   OriginalPrice = 14.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 3,
+                   ProductTypeId = 2,
+                   Price = 6.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 4,
+                   ProductTypeId = 5,
+                   Price = 3.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 4,
+                   ProductTypeId = 6,
+                   Price = 9.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 4,
+                   ProductTypeId = 7,
+                   Price = 19.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 5,
+                   ProductTypeId = 5,
+                   Price = 3.99m,
+               },
+               new ProductVariant
+               {
+                   ProductId = 6,
+                   ProductTypeId = 5,
+                   Price = 2.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 7,
+                   ProductTypeId = 8,
+                   Price = 19.99m,
+                   OriginalPrice = 29.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 7,
+                   ProductTypeId = 9,
+                   Price = 69.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 7,
+                   ProductTypeId = 10,
+                   Price = 49.99m,
+                   OriginalPrice = 59.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 8,
+                   ProductTypeId = 8,
+                   Price = 9.99m,
+                   OriginalPrice = 24.99m,
+               },
+               new ProductVariant
+               {
+                   ProductId = 9,
+                   ProductTypeId = 8,
+                   Price = 14.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 10,
+                   ProductTypeId = 1,
+                   Price = 159.99m,
+                   OriginalPrice = 299m
+               },
+               new ProductVariant
+               {
+                   ProductId = 11,
+                   ProductTypeId = 1,
+                   Price = 79.99m,
+                   OriginalPrice = 399m
+               }
+               );
         }
         //Adds Models to the Database
         public DbSet<Product> Products { get; set; } 
-        public DbSet<Category> Categories { get; set; }   
-
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }
     }
 }
