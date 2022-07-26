@@ -5,6 +5,6 @@
         List<Category> Categories { get; set; }
 
         Task GetCategories();
-        //Task<ServiceResponse<Product>> GetProductById(int productId);
+       
     }
 }

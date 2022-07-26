@@ -1,4 +1,6 @@
 ﻿
+using BlazorEcommerce.Shared.DTOs;
+
 namespace BlazorEcommerce.Client.Services.ProductService
 {
     public class ProductService : IProductService
@@ -73,8 +75,7 @@ namespace BlazorEcommerce.Client.Services.ProductService
             if (Products.Count == 0)
             {
                 Message = "No products found.";
-            }
-            /*ProductsChanged.Invoke();*/
+            }            
             ProductsChanged?.Invoke();
 
         }
