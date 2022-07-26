@@ -31,7 +31,6 @@ namespace BlazorEcommerce.Server.Controllers
         }
 
         [HttpGet("{productId}")]
-        /*public async Task<ActionResult<ServiceResponse<Product>>> GetProductById(int productId)*/
         public async Task<ActionResult<ServiceResponse<Product>>> GetProduct(int productId)
         {
             /*var result = await _productService.GetProductById(productId);*/
@@ -46,13 +45,11 @@ namespace BlazorEcommerce.Server.Controllers
             return Ok(result);
         }
 
-        /*        [HttpGet("search/{searchText}/{page}")]
-                public async Task<ActionResult<ServiceResponse<ProductSearchResult>>> SearchProducts(string searchText, int page = 1)*/
-        [HttpGet("search/{searchText}")]
-        public async Task<ActionResult<ServiceResponse<Product>>> SearchProducts(string searchText)
+        //PRODUCT SEARCH RESULT DTO
+        [HttpGet("search/{searchText}/{page}")]
+        public async Task<ActionResult<ServiceResponse<ProductSearchResultDTO>>> SearchProducts(string searchText, int page = 1)
         {
-            /*var result = await _productService.SearchProducts(searchText, page);*/
-            var result = await _productService.SearchProducts(searchText);
+            var result = await _productService.SearchProducts(searchText, page);
             return Ok(result);
         }
 

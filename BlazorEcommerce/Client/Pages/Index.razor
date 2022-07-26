@@ -1,5 +1,5 @@
 ﻿@page "/"
-@page "/search/{searchText}"
+@page "/search/{searchText}/{page:int}"
 @page "/{categoryUrl}"
 @inject IProductService ProductService
 
@@ -26,7 +26,7 @@ else
     {
         if (SearchText != null)
         {
-            await ProductService.SearchProducts(SearchText);
+            await ProductService.SearchProducts(SearchText, Page);
         }
         else
         {
